@@ -1,10 +1,10 @@
 import os from "os";
 import path from "path";
-import { INTEGER, NUMBER, Sequelize, STRING, ENUM, BLOB } from "sequelize";
+import { INTEGER, NUMBER, Sequelize, STRING, ENUM, JSON } from "sequelize";
 
-import { User, Time, Appointment } from "./models";
+import { User, Time, Appointment, Organization, Connection } from "./models";
 
-const sequelize = new Sequelize("calendar-example", "", undefined, {
+const sequelize = new Sequelize("kleo", "", undefined, {
 	dialect: "sqlite",
 	storage: path.join("db/temp.sqlite"),
 	logging: true
@@ -97,6 +97,58 @@ Appointment.init(
 	},
 	{
 		modelName: "appointment",
+		sequelize, 
+		timestamps: true
+	}
+);
+
+Organization.init(
+	{
+		id: {
+			allowNull: true,
+			primaryKey:true,
+			type: NUMBER // SQLITE will use INTEGER
+		},
+		keyword: {
+			type: STRING
+		},
+		xTimes: {
+			type: NUMBER
+		},
+		yDays: {
+			type: NUMBER,
+		},
+		intent: {
+			type: STRING,
+		}
+	},
+	{
+		modelName: "organization",
+		sequelize, 
+		timestamps: true
+	}
+);
+
+Connection.init(
+	{
+		id: {
+			allowNull: true,
+			primaryKey: true,
+			type: NUMBER // SQLITE will use INTEGER
+		},
+		userId: {
+			type: NUMBER
+		},
+		organizationId: {
+			type: NUMBER
+		},
+		connectData: {
+			type: JSON,
+			allowNull: true
+		}
+	},
+	{
+		modelName: "connection",
 		sequelize, 
 		timestamps: true
 	}
