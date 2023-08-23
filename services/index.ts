@@ -9,6 +9,6 @@ export const services = express.Router();
 
 services.use("/auth", authRouter);
 services.use("/users", userRouter);
-services.use("organizations", organizationRouter);
+services.use("/organizations", organizationRouter);
 services.use("/connections", connectionRouter);
 services.use("/time", timeRouter);

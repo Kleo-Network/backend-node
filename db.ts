@@ -104,10 +104,10 @@ Appointment.init(
 
 Organization.init(
 	{
-		id: {
-			allowNull: true,
-			primaryKey:true,
-			type: NUMBER // SQLITE will use INTEGER
+		domainUrl: {
+			type: STRING,
+			allowNull: false,
+			unique: true,
 		},
 		keyword: {
 			type: STRING
@@ -131,16 +131,16 @@ Organization.init(
 
 Connection.init(
 	{
-		id: {
-			allowNull: true,
-			primaryKey: true,
-			type: NUMBER // SQLITE will use INTEGER
-		},
-		userId: {
+		userAddress: {
 			type: NUMBER
 		},
 		organizationId: {
-			type: NUMBER
+			type: NUMBER,
+		},
+		domainUrl: {
+			type: STRING,
+			unique: true,
+			allowNull: false,
 		},
 		connectData: {
 			type: JSON,

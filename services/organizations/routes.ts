@@ -7,7 +7,7 @@ import * as controller from "./controller";
 export const organizationRouter = express.Router();
 
 
-/** GET /api/organizations */
+/** GET /api/organizations?orgId=:orgId */
 organizationRouter.route('/').get(controller.find);
 
 /** Authenticated route: GET /api/organization */

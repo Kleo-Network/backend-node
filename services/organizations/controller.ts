@@ -32,7 +32,7 @@ export const getAll = (req: Request, res: Response, next: NextFunction) => {
 
 export const create = async (req: Request, res: Response, next: NextFunction) => {
 	try {
-		const {keyword, xTimes, yDays, intent} = req.body;
+		const {keyword, xTimes, yDays, intent, domainUrl} = req.body;
 		const inviteCode = (Math.random() + 1).toString(36).substring(7);
 		const orgObject = {
 			keyword: keyword,
@@ -40,15 +40,15 @@ export const create = async (req: Request, res: Response, next: NextFunction) =>
 			yDays: yDays,
 			intent: intent,
 			inviteCode: inviteCode,
-			authorised: false
-			
+			authorised: false,
+			domainUrl: domainUrl
 		};
 		const organization = await Organization.create(orgObject);
 		const result = {organization};
 		return res.status(200).send(result);
 	} catch (error) {
 		log.error(error);
-		return res.status(400);
+		return res.status(400).send(error);
 	}
 };
 

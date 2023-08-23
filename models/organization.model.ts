@@ -8,4 +8,5 @@ export class Organization extends Model {
     public intent!: string;
 	public inviteCode!: string;
 	public authorised!: boolean;
+	public domainUrl!: string;
 }

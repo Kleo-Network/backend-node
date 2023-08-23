@@ -7,15 +7,15 @@ const log: Logger = new Logger({ name: "errorLogger" });
 
 
 export const findByUser = async (req: Request, res: Response, next: NextFunction) => {
-	if (!(req as any).query.hasOwnProperty("userId")) {
+	if (!(req as any).query.hasOwnProperty("publicAddress")) {
 		return res.status(401).send({ error: "Please send Address!" });
 	}
-	return res.status(200).send(await Connection.findAll({where: { userId: req.query.userId }}));
+	return res.status(200).send(await Connection.findAll({where: { userAddress: req.query.publicAddress }}));
 };
 
 export const findByOrg = async (req: Request, res: Response, next: NextFunction) => {
 	if (!(req as any).query.hasOwnProperty("orgId")) {
-		return res.status(401).send({ error: "Please send Address!" });
+		return res.status(401).send({ error: "Please send orgId!" });
 	}
 	return res.status(200).send(await Connection.findAll({where: { organizationId: req.query.orgId }}));
 };
@@ -32,18 +32,19 @@ export const get = (req: Request, res: Response, next: NextFunction) => {
 
 export const create = async (req: Request, res: Response, next: NextFunction) => {
 	try {
-		const {userId, orgId, connectData} = req.body;
+		const {userAddress, orgId, connectData, domainUrl} = req.body;
 		const connectionObject = {
-			userId,
+			userAddress,
 			organizationId: orgId,
-			connectData: connectData || {}		
+			connectData: connectData || {},
+			domainUrl	
 		};
 		const connection = await Connection.create(connectionObject);
 		const result = {connection};
 		return res.status(200).send(result);
 	} catch (error) {
 		log.error(error);
-		return res.status(400);
+		return res.status(400).send(error);
 	}
 };
 
