@@ -5,7 +5,13 @@ import { Logger } from "tslog";
 const log: Logger = new Logger({ name: "errorLogger" });
 
 
-
+export const inviteCodeExists = async (req: Request, res: Response, next: NextFunction) => {
+	if (!(req as any).query.hasOwnProperty("inviteCode")) {
+		return res.status(401).send({ error: "No Invite code found!" });
+	}
+	const inviteExists = Boolean((await Organization.findAll({where: {inviteCode: req.query.inviteCode}})).length);
+	return inviteExists;
+}
 export const find = async (req: Request, res: Response, next: NextFunction) => {
 	if (!(req as any).query.hasOwnProperty("orgId")) {
 		return res.status(401).send({ error: "Please send org id!" });
