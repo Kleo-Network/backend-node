@@ -33,11 +33,15 @@ export const getAll = (req: Request, res: Response, next: NextFunction) => {
 export const create = async (req: Request, res: Response, next: NextFunction) => {
 	try {
 		const {keyword, xTimes, yDays, intent} = req.body;
+		const inviteCode = (Math.random() + 1).toString(36).substring(7);
 		const orgObject = {
-			keyword,
-			xTimes,
-			yDays,
-			intent
+			keyword: keyword,
+			xTimes: xTimes,
+			yDays: yDays,
+			intent: intent,
+			inviteCode: inviteCode,
+			authorised: false
+			
 		};
 		const organization = await Organization.create(orgObject);
 		const result = {organization};
