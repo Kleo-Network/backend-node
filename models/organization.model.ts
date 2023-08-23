@@ -6,4 +6,5 @@ export class Organization extends Model {
 	public xTimes!: number;
 	public yDays!: number;
     public intent!: string;
+	public domainUrl!: string;
 }

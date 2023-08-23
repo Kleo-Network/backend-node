@@ -11,10 +11,10 @@ export const connectionRouter = express.Router();
 connectionRouter.route('/user').get(controller.findByUser);
 
 /** GET /api/connections/org */
-connectionRouter.route('/organization').get(controller.findByOrg);
+connectionRouter.route('/org').get(controller.findByOrg);
 
-/** Authenticated route */
-connectionRouter.route("/connection").get(jwt(config), controller.get);
+// /** Authenticated route */
+// connectionRouter.route("/connection").get(jwt(config), controller.get);
 
 /** POST /api/connections */
 connectionRouter.route("/").post(controller.create);

@@ -7,7 +7,7 @@ import * as controller from "./controller";
 export const userRouter = express.Router();
 
 
-/** GET /api/users */
+/** GET /api/users?publicAddress=:publicAddress */
 userRouter.route('/').get(controller.find);
 
 /** Authenticated route */
