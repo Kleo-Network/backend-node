@@ -1,20 +1,49 @@
 {
     "client": "Thunder Client",
     "collectionName": "Kleo",
-    "dateExported": "2023-08-21T17:52:14.067Z",
+    "dateExported": "2023-08-23T18:18:49.946Z",
     "version": "1.1",
-    "folders": [],
+    "folders": [
+        {
+            "_id": "0c5c1a84-1499-472d-9c9c-7b1232f5cf73",
+            "name": "orgs",
+            "containerId": "",
+            "created": "2023-08-22T18:34:40.649Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "ba79e196-0035-494e-90a2-962770835cad",
+            "name": "users",
+            "containerId": "",
+            "created": "2023-08-22T18:34:51.257Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "a71c91b7-aaf8-42d1-9339-ef01aecf6f07",
+            "name": "auth",
+            "containerId": "",
+            "created": "2023-08-22T18:35:01.768Z",
+            "sortNum": 30000
+        },
+        {
+            "_id": "b56ccc44-e47e-476f-a05c-454d9e921633",
+            "name": "connections",
+            "containerId": "",
+            "created": "2023-08-22T20:03:25.293Z",
+            "sortNum": 40000
+        }
+    ],
     "requests": [
         {
-            "_id": "f36aa61b-e631-403f-9ac3-d93a6806c852",
+            "_id": "e889494a-0115-46da-a6d7-875f7d6489b8",
             "colId": "9db5d66e-f7a3-4b00-9b76-c919d6cef20b",
-            "containerId": "",
-            "name": "Auth",
-            "url": "http://0.0.0.0:8000/api/auth/",
+            "containerId": "ba79e196-0035-494e-90a2-962770835cad",
+            "name": "Create User",
+            "url": "http://0.0.0.0:8000/api/users/",
             "method": "POST",
-            "sortNum": 10000,
-            "created": "2023-08-21T17:51:57.902Z",
-            "modified": "2023-08-21T17:51:57.902Z",
+            "sortNum": 2500,
+            "created": "2023-08-22T14:27:29.204Z",
+            "modified": "2023-08-22T16:51:56.958Z",
             "headers": [
                 {
                     "name": "Content-Type",
@@ -24,8 +53,238 @@
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"publicAddress\":\"0x01e92439cfe82aa2d75970954445308aa1febbe8\",\n  \"signature\": \"0x2cb520f94bf314b7052db7122a519fd3e063dacab85f737bf1db72aa09748c5b0c6ed452d06ba08d9be60fbc9c9e3a8146a611947dd08e1fb113a4fd40f48cc21b\"\n}",
+                "raw": "{\n  \"nonce\": 1,\n  \"publicAddress\": \"0x01e92439cfe82aa2d75970954445308aa1febbe8\",\n  \"username\": \"aish\"\n}",
                 "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "7257c8e5-6e62-4c70-a5be-24235c874384",
+            "colId": "9db5d66e-f7a3-4b00-9b76-c919d6cef20b",
+            "containerId": "ba79e196-0035-494e-90a2-962770835cad",
+            "name": "find user by address",
+            "url": "http://0.0.0.0:8000/api/users?publicAddress=0x01e92439cfe82aa2d75970954445308aa1febbe8",
+            "method": "GET",
+            "sortNum": 5000,
+            "created": "2023-08-22T19:41:53.033Z",
+            "modified": "2023-08-22T20:15:19.403Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [
+                {
+                    "name": "publicAddress",
+                    "value": "0x01e92439cfe82aa2d75970954445308aa1febbe8",
+                    "isPath": false
+                }
+            ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjo3LCJwdWJsaWNBZGRyZXNzIjoiMHgwMWU5MjQzOWNmZTgyYWEyZDc1OTcwOTU0NDQ1MzA4YWExZmViYmU4In0sImlhdCI6MTY5MjcyMzIyOX0.tfHgnCEdx7D3-EQzQmjiVlEIaCWnnqTb6y2wVmc9lzU"
+            },
+            "tests": []
+        },
+        {
+            "_id": "f36aa61b-e631-403f-9ac3-d93a6806c852",
+            "colId": "9db5d66e-f7a3-4b00-9b76-c919d6cef20b",
+            "containerId": "a71c91b7-aaf8-42d1-9339-ef01aecf6f07",
+            "name": "Auth",
+            "url": "http://0.0.0.0:8000/api/auth/",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-08-21T17:51:57.902Z",
+            "modified": "2023-08-22T16:53:49.453Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"publicAddress\":\"0x01e92439cfe82aa2d75970954445308aa1febbe8\",\n  \"signature\": \"0x071bfdb78be4746d18575d22e66c7d78a0cfeee0880f5a5917aeea12c2a5cbb97cdf7ad9c7a013d5a1587f621a6bf31d92577672600601855afa3e0502e4132c1c\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "9c4450a6-5123-4924-a7c7-8b079ca83e8e",
+            "colId": "9db5d66e-f7a3-4b00-9b76-c919d6cef20b",
+            "containerId": "0c5c1a84-1499-472d-9c9c-7b1232f5cf73",
+            "name": "Create Organization",
+            "url": "http://0.0.0.0:8000/api/organizations/",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-08-22T16:54:48.906Z",
+            "modified": "2023-08-22T18:00:52.818Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"keyword\": \"google\",\n  \"xTimes\": 3,\n  \"yDays\": 10,\n  \"intent\": \"abc\",\n  \"domainUrl\": \"abc.com\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "5dd68db8-9eb2-46fa-8c47-25bc374293da",
+            "colId": "9db5d66e-f7a3-4b00-9b76-c919d6cef20b",
+            "containerId": "ba79e196-0035-494e-90a2-962770835cad",
+            "name": "find user by id",
+            "url": "http://0.0.0.0:8000/api/users/user",
+            "method": "GET",
+            "sortNum": 15000,
+            "created": "2023-08-22T19:48:54.114Z",
+            "modified": "2023-08-22T20:02:48.597Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjo3LCJwdWJsaWNBZGRyZXNzIjoiMHgwMWU5MjQzOWNmZTgyYWEyZDc1OTcwOTU0NDQ1MzA4YWExZmViYmU4In0sImlhdCI6MTY5MjcyMzIyOX0.tfHgnCEdx7D3-EQzQmjiVlEIaCWnnqTb6y2wVmc9lzU"
+            },
+            "tests": []
+        },
+        {
+            "_id": "9db74d59-5d86-46cf-8b9a-23f9ecd70d18",
+            "colId": "9db5d66e-f7a3-4b00-9b76-c919d6cef20b",
+            "containerId": "0c5c1a84-1499-472d-9c9c-7b1232f5cf73",
+            "name": "find org",
+            "url": "http://0.0.0.0:8000/api/organizations?orgId=1",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2023-08-22T18:35:18.744Z",
+            "modified": "2023-08-22T18:36:08.029Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [
+                {
+                    "name": "orgId",
+                    "value": "1",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "d547c92e-872a-4805-96fd-387fcce34b63",
+            "colId": "9db5d66e-f7a3-4b00-9b76-c919d6cef20b",
+            "containerId": "0c5c1a84-1499-472d-9c9c-7b1232f5cf73",
+            "name": "find all orgs",
+            "url": "http://0.0.0.0:8000/api/organizations/all",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2023-08-22T18:36:17.752Z",
+            "modified": "2023-08-22T19:40:10.510Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjo3LCJwdWJsaWNBZGRyZXNzIjoiMHgwMWU5MjQzOWNmZTgyYWEyZDc1OTcwOTU0NDQ1MzA4YWExZmViYmU4In0sImlhdCI6MTY5MjcyMzIyOX0.tfHgnCEdx7D3-EQzQmjiVlEIaCWnnqTb6y2wVmc9lzU"
+            },
+            "tests": []
+        },
+        {
+            "_id": "cbecf4db-5c25-4b5c-902e-3df101fb27c5",
+            "colId": "9db5d66e-f7a3-4b00-9b76-c919d6cef20b",
+            "containerId": "b56ccc44-e47e-476f-a05c-454d9e921633",
+            "name": "Create connection",
+            "url": "http://0.0.0.0:8000/api/connections/",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2023-08-22T20:03:42.779Z",
+            "modified": "2023-08-22T20:09:56.231Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"userAddress\": \"0x01e92439cfe82aa2d75970954445308aa1febbe8\",\n  \"orgId\": 1,\n  \"connectData\": {\n    \"abc\": \"1\"\n  },\n  \"domainUrl\": \"abcv.com\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "e41a9718-e367-4d9c-91a9-da2971824e71",
+            "colId": "9db5d66e-f7a3-4b00-9b76-c919d6cef20b",
+            "containerId": "b56ccc44-e47e-476f-a05c-454d9e921633",
+            "name": "find connection by user",
+            "url": "http://0.0.0.0:8000/api/connections/user?publicAddress=0x01e92439cfe82aa2d75970954445308aa1febbe8",
+            "method": "GET",
+            "sortNum": 80000,
+            "created": "2023-08-22T20:12:46.383Z",
+            "modified": "2023-08-22T20:15:24.014Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [
+                {
+                    "name": "publicAddress",
+                    "value": "0x01e92439cfe82aa2d75970954445308aa1febbe8",
+                    "isPath": false
+                }
+            ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjo3LCJwdWJsaWNBZGRyZXNzIjoiMHgwMWU5MjQzOWNmZTgyYWEyZDc1OTcwOTU0NDQ1MzA4YWExZmViYmU4In0sImlhdCI6MTY5MjcyMzIyOX0.tfHgnCEdx7D3-EQzQmjiVlEIaCWnnqTb6y2wVmc9lzU"
+            },
+            "tests": []
+        },
+        {
+            "_id": "7feb2b65-a9ca-4a11-9b60-07a675cd3d8d",
+            "colId": "9db5d66e-f7a3-4b00-9b76-c919d6cef20b",
+            "containerId": "b56ccc44-e47e-476f-a05c-454d9e921633",
+            "name": "find connection by org",
+            "url": "http://0.0.0.0:8000/api/connections/org?orgId=1",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2023-08-22T20:14:23.665Z",
+            "modified": "2023-08-22T20:16:22.405Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [
+                {
+                    "name": "orgId",
+                    "value": "1",
+                    "isPath": false
+                }
+            ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjo3LCJwdWJsaWNBZGRyZXNzIjoiMHgwMWU5MjQzOWNmZTgyYWEyZDc1OTcwOTU0NDQ1MzA4YWExZmViYmU4In0sImlhdCI6MTY5MjcyMzIyOX0.tfHgnCEdx7D3-EQzQmjiVlEIaCWnnqTb6y2wVmc9lzU"
             },
             "tests": []
         }
