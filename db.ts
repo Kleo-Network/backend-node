@@ -1,6 +1,6 @@
 import os from "os";
 import path from "path";
-import { INTEGER, NUMBER, Sequelize, STRING, ENUM, JSON } from "sequelize";
+import { INTEGER, NUMBER, Sequelize, STRING, ENUM, JSON, BOOLEAN } from "sequelize";
 
 import { User, Time, Appointment, Organization, Connection } from "./models";
 
@@ -109,17 +109,18 @@ Organization.init(
 			allowNull: false,
 			unique: true,
 		},
-		keyword: {
-			type: STRING
+		inviteCode: {
+			type: STRING,
+			allowNull: false,
 		},
-		xTimes: {
-			type: NUMBER
-		},
-		yDays: {
-			type: NUMBER,
+		authorized: {
+			type: BOOLEAN,
 		},
 		intent: {
 			type: STRING,
+		},
+		formData: {
+			type: JSON
 		}
 	},
 	{

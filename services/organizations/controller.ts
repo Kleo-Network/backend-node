@@ -4,7 +4,17 @@ import { Logger } from "tslog";
 
 const log: Logger = new Logger({ name: "errorLogger" });
 
-
+export const checkInviteCode = async (req: Request, res: Response, next: NextFunction) => {
+	if (!(req as any).query.hasOwnProperty("inviteCode")) {
+		return res.status(401).send({ error: "Please send invite code!" });
+	}
+	let orgs = await Organization.findAll({where: { inviteCode: req.query.inviteCode }});
+	if(orgs.length){
+		return res.status(200).send(true);
+	}else {
+		res.status(401).send('Please enter valid invite code!');
+	}
+};
 
 export const find = async (req: Request, res: Response, next: NextFunction) => {
 	if (!(req as any).query.hasOwnProperty("orgId")) {
@@ -32,16 +42,14 @@ export const getAll = (req: Request, res: Response, next: NextFunction) => {
 
 export const create = async (req: Request, res: Response, next: NextFunction) => {
 	try {
-		const {keyword, xTimes, yDays, intent, domainUrl} = req.body;
+		const { intent, domainUrl, formData } = req.body;
 		const inviteCode = (Math.random() + 1).toString(36).substring(7);
 		const orgObject = {
-			keyword: keyword,
-			xTimes: xTimes,
-			yDays: yDays,
-			intent: intent,
-			inviteCode: inviteCode,
-			authorised: false,
-			domainUrl: domainUrl
+			intent,
+			inviteCode,
+			authorized: false,
+			domainUrl,
+			formData
 		};
 		const organization = await Organization.create(orgObject);
 		const result = {organization};

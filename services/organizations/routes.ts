@@ -6,6 +6,8 @@ import * as controller from "./controller";
 
 export const organizationRouter = express.Router();
 
+/** GET /api/organizations/invite?inviteCode=:inviteCode */
+organizationRouter.route('/invite').get(controller.checkInviteCode);
 
 /** GET /api/organizations?orgId=:orgId */
 organizationRouter.route('/').get(controller.find);

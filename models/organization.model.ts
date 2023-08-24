@@ -1,12 +1,29 @@
 import { Model } from "sequelize";
 
 export class Organization extends Model {
-	public id!: number; // Note that the `null assertion` `!` is required in strict mode.
-	public keyword!: string;
-	public xTimes!: number;
-	public yDays!: number;
-    public intent!: string;
 	public inviteCode!: string;
-	public authorised!: boolean;
+	public authorized!: boolean;
 	public domainUrl!: string;
+	public intent!: string;
+	public formData!: FormData[];
 }
+
+export interface FormData {
+	header: string;
+	 default: boolean;
+	 subMenu: SubMenu[];
+}
+
+export interface SubMenu {
+	 index: string;
+	 times: number;
+	 days: number;
+     default: boolean;
+	 state: ConnectStates;
+}
+
+export enum ConnectStates {
+    SELECTED = 'selected',
+    DISABLED = 'disabled',
+    DESELECTED = 'deselected'
+  }
