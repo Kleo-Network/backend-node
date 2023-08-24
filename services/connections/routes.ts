@@ -1,11 +1,12 @@
 import express from "express";
-import jwt from "express-jwt";
 
-import { config } from "../../config";
 import * as controller from "./controller";
 
 export const connectionRouter = express.Router();
 
+
+/** GET /api/connections/org */
+connectionRouter.route('/user/:user/org/:org').get(controller.findByUserAndOrg);
 
 /** GET /api/connections/user */
 connectionRouter.route('/user').get(controller.findByUser);

@@ -119,6 +119,9 @@ Organization.init(
 		intent: {
 			type: STRING,
 		},
+		intentGeneric: {
+			type: STRING,
+		},
 		formData: {
 			type: JSON
 		}

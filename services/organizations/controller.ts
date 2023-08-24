@@ -42,10 +42,11 @@ export const getAll = (req: Request, res: Response, next: NextFunction) => {
 
 export const create = async (req: Request, res: Response, next: NextFunction) => {
 	try {
-		const { intent, domainUrl, formData } = req.body;
+		const { intent,intentGeneric, domainUrl, formData } = req.body;
 		const inviteCode = (Math.random() + 1).toString(36).substring(7);
 		const orgObject = {
 			intent,
+			intentGeneric,
 			inviteCode,
 			authorized: false,
 			domainUrl,

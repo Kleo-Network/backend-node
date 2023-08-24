@@ -5,6 +5,7 @@ export class Organization extends Model {
 	public authorized!: boolean;
 	public domainUrl!: string;
 	public intent!: string;
+	public intentGeneric?: string;
 	public formData!: FormData[];
 }
 
