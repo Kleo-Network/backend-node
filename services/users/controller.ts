@@ -23,10 +23,11 @@ export const get = (req: Request, res: Response, next: NextFunction) => {
 
 export const create = async (req: Request, res: Response, next: NextFunction) => {
 	try {
-		const { publicAddress, username } = req.body;
+		const { publicAddress } = req.body;
 		const userObject = {
+			nonce: 1,
 			publicAddress: publicAddress,
-			username: username || Math.random().toString(36).slice(2, 7),
+			username: Math.random().toString(36).slice(2, 7),
 		};
 		const user = await User.create(userObject);
 		const result = { user: user };
